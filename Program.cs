@@ -292,7 +292,7 @@ namespace Lab2_Sokolova_Transport
         /// </summary>
         /// <param name="line">Входная строка</param>
         /// <returns>Объект типа транспорт</returns>
-        private static My_transport ParseTransport(string line)
+        public static My_transport ParseTransport(string line)
         {
             Trace.WriteLine("Вызвана функция ParseTransport");
             var args = line.Split(' ');
@@ -313,12 +313,12 @@ namespace Lab2_Sokolova_Transport
         /// </summary>
         /// <param name="Ob">Массив машин</param>
         /// <param name="carrying">Грузоподъемность</param>
-        static void Search_carrying(My_transport[] Ob, double carrying)
+        public static void SearchCarrying(My_transport[] Ob, double carrying)
         {
             foreach (My_transport i in Ob)
             {
                 double p = i.Carrying();
-                if (carrying < p)
+                if (carrying <= p)
                 {
                     i.Info();
                 }
@@ -354,7 +354,8 @@ namespace Lab2_Sokolova_Transport
                             Console.WriteLine(String.Format("Строка {0}: {1}", (i + 1).ToString(), e.Message));
                         }
                     }
-                    //Search_carrying(transportArray, 100);
+                    Console.WriteLine("Поиск машин с подходящей грузоподъемностью: \n");
+                    SearchCarrying(transportArray, 100);
                     
                     logStream.Close();
                 }
